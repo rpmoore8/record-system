@@ -47,8 +47,8 @@ const createRecords = recordAttributes => {
   let records = [];
   recordAttributes.forEach(attributes => {
     let record = {
-      firstName: attributes[0],
-      lastName: attributes[1],
+      lastName: attributes[0],
+      firstName: attributes[1],
       gender: attributes[2],
       favoriteColor: attributes[3],
       dateOfBirth: attributes[4],

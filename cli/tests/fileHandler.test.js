@@ -28,12 +28,12 @@ test("converts text object into array of each record's attributes", () => {
 
 test("converts each record's attributes into a record object", () => {
   recordAttributes = [];
-  recordAttributes.push(["Drew", "Lacy", "Male", "Orange", "1/2/1990"]);
+  recordAttributes.push(["Lacy", "Drew", "Male", "Orange", "1/2/1990"]);
   let records = fileHandler.createRecords(recordAttributes);
   let record = records[0];
 
-  expect(record.firstName).toBe("Drew");
   expect(record.lastName).toBe("Lacy");
+  expect(record.firstName).toBe("Drew");
   expect(record.gender).toBe("Male");
   expect(record.favoriteColor).toBe("Orange");
   expect(record.dateOfBirth).toBe("1/2/1990");
@@ -45,8 +45,8 @@ test("parses records from directory into list of record objects", () => {
 
   expect(records.length).toBe(7);
   records.forEach(record => {
-    expect(typeof record.firstName).toBe("string");
     expect(typeof record.lastName).toBe("string");
+    expect(typeof record.firstName).toBe("string");
     expect(typeof record.gender).toBe("string");
     expect(typeof record.favoriteColor).toBe("string");
     expect(typeof record.dateOfBirth).toBe("string");
