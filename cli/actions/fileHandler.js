@@ -65,8 +65,6 @@ const createRecords = recordAttributes => {
   return records;
 };
 
-// convertFilesToRecords("/Users/RPMOORE/Desktop/record-system/cli/records/");
-
 module.exports.convertFilesToRecords = convertFilesToRecords;
 module.exports.getFiles = getFiles;
 module.exports.readFiles = readFiles;
