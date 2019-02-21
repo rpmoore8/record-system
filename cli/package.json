@@ -2,7 +2,7 @@
   "name": "cli",
   "version": "1.0.0",
   "description": "CLI for importing and displaying records.",
-  "main": "interface.js",
+  "main": "index.js",
   "directories": {
     "test": "tests"
   },
@@ -13,5 +13,8 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^24.1.0"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.9"
   }
 }
