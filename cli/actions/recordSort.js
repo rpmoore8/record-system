@@ -4,8 +4,10 @@ const byGender = records => {
   records.sort((a, b) => {
     if (a.gender === b.gender) {
       if (a.lastName <= b.lastName) {
+        // a comes first
         return -1;
       } else {
+        // b comes first
         return 1;
       }
     } else {
@@ -41,10 +43,8 @@ const byDateOfBirth = records => {
 const byLastNameDesc = records => {
   records.sort((a, b) => {
     if (a.lastName >= b.lastName) {
-      // a comes first
       return -1;
     } else {
-      // b comes first
       return 1;
     }
   });
