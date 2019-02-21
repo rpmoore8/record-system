@@ -1,22 +1,46 @@
 // Unit tests for recordSort.js
 
 const recordSort = require("../actions/recordSort");
-const fileHandler = require("../actions/FileHandler");
 
-test("sort record objects by last name, descending", () => {
-  let records = fileHandler.convertFilesToRecords(
-    "/Users/RPMOORE/Desktop/record-system/cli/records/"
-  );
-  recordSort.byLastNameDesc(records);
-  for (let i = 0; i < records.length - 1; i++) {
-    expect(records[i].lastName >= records[i + 1].lastName).toBe(true);
+const records = [
+  {
+    lastName: "Lawrence",
+    firstName: "Olivia",
+    gender: "Female",
+    favoriteColor: "Black",
+    dateOfBirth: "4/12/1992"
+  },
+  {
+    lastName: "Thompson",
+    firstName: "Chris",
+    gender: "Male",
+    favoriteColor: "Red",
+    dateOfBirth: "2/24/1999"
+  },
+  {
+    lastName: "Smith",
+    firstName: "Lucy",
+    gender: "Female",
+    favoriteColor: "Purple",
+    dateOfBirth: "2/24/1999"
+  },
+  {
+    lastName: "Smith",
+    firstName: "Larry",
+    gender: "Male",
+    favoriteColor: "Blue",
+    dateOfBirth: "6/3/1976"
+  },
+  {
+    lastName: "Farris",
+    firstName: "Cindy",
+    gender: "Female",
+    favoriteColor: "Pink",
+    dateOfBirth: "1/23/1963"
   }
-});
+];
 
 test("sort record object by gender, then last name ascending", () => {
-  let records = fileHandler.convertFilesToRecords(
-    "/Users/RPMOORE/Desktop/record-system/cli/records/"
-  );
   recordSort.byGender(records);
   for (let i = 0; i < records.length - 1; i++) {
     if (records[i].gender === records[i + 1].gender) {
@@ -28,15 +52,27 @@ test("sort record object by gender, then last name ascending", () => {
 });
 
 test("sort record object by day of birth ascending", () => {
-  let records = fileHandler.convertFilesToRecords(
-    "/Users/RPMOORE/Desktop/record-system/cli/records/"
-  );
   recordSort.byDateOfBirth(records);
-  console.log(records);
   for (let i = 0; i < records.length - 1; i++) {
-    expect(
-      recordSort.dateOfBirthValue(records[i]) <
-        recordSort.dateOfBirthValue(records[i + 1])
-    ).toEqual(true);
+    dateA = records[i].dateOfBirth.split("/");
+    dateB = records[i + 1].dateOfBirth.split("/");
+
+    // compare years
+    expect(dateA[2] <= dateB[2]).toBe(true);
+    if (dateA[2] === dateB[2]) {
+      // compare months
+      expect(dateA[0] <= dateB[0]).toBe(true);
+      if (dateA[0] === dateB[0]) {
+        // compare days
+        expect(dateA[1] <= dateB[1]).toBe(true);
+      }
+    }
+  }
+});
+
+test("sort record objects by last name, descending", () => {
+  recordSort.byLastNameDesc(records);
+  for (let i = 0; i < records.length - 1; i++) {
+    expect(records[i].lastName >= records[i + 1].lastName).toBe(true);
   }
 });
