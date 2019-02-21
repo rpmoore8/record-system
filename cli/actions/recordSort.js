@@ -28,12 +28,20 @@ const byGender = records => {
   });
 };
 
+const dateOfBirthValue = record => {
+  let value = 0;
+  let date = record.dateOfBirth.split("/");
+  value += Number(date[1]) + Number(date[0]) * 100 + Number(date[2]) * 10000;
+  return value;
+};
+
 const byDateOfBirth = records => {
   records.sort((a, b) => {
-    return a.dateOfBirthValue() - b.dateOfBirthValue();
+    return dateOfBirthValue(a) - dateOfBirthValue(b);
   });
 };
 
 module.exports.byLastNameDesc = byLastNameDesc;
 module.exports.byGender = byGender;
+module.exports.dateOfBirthValue = dateOfBirthValue;
 module.exports.byDateOfBirth = byDateOfBirth;

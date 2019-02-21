@@ -1,6 +1,7 @@
 // Functions for importing files from a directory and parsing them into a list of record objects
 
 const fs = require("fs");
+const dbPath = "/Users/RPMOORE/Desktop/record-system/dataStore.json";
 
 const convertFilesToRecords = directory => {
   let files = getFiles(directory);
@@ -51,18 +52,25 @@ const createRecords = recordAttributes => {
       firstName: attributes[1],
       gender: attributes[2],
       favoriteColor: attributes[3],
-      dateOfBirth: attributes[4],
-      dateOfBirthValue: function() {
-        let value = 0;
-        let date = this.dateOfBirth.split("/");
-        value +=
-          Number(date[1]) + Number(date[0]) * 100 + Number(date[2]) * 10000;
-        return value;
-      }
+      dateOfBirth: attributes[4]
     };
     records.push(record);
   });
   return records;
+};
+
+const appendRecordsToDataStore = records => {
+  let data = fs.readFileSync(dbPath);
+  try {
+    let dataStore = JSON.parse(data);
+    records.forEach(record => {
+      dataStore.push(record);
+    });
+    fs.writeFileSync(dbPath, JSON.stringify(dataStore));
+  } catch (SyntaxError) {
+    // dataStore is empty
+    fs.appendFileSync(dbPath, JSON.stringify(records));
+  }
 };
 
 module.exports.convertFilesToRecords = convertFilesToRecords;
@@ -70,3 +78,4 @@ module.exports.getFiles = getFiles;
 module.exports.readFiles = readFiles;
 module.exports.parseForAttributes = parseForAttributes;
 module.exports.createRecords = createRecords;
+module.exports.appendRecordsToDataStore = appendRecordsToDataStore;

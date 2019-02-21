@@ -37,7 +37,6 @@ test("converts each record's attributes into a record object", () => {
   expect(record.gender).toBe("Male");
   expect(record.favoriteColor).toBe("Orange");
   expect(record.dateOfBirth).toBe("1/2/1990");
-  expect(record.dateOfBirthValue()).toBe(19900102);
 });
 
 test("parses records from directory into list of record objects", () => {
@@ -50,6 +49,5 @@ test("parses records from directory into list of record objects", () => {
     expect(typeof record.gender).toBe("string");
     expect(typeof record.favoriteColor).toBe("string");
     expect(typeof record.dateOfBirth).toBe("string");
-    expect(typeof record.dateOfBirthValue()).toBe("number");
   });
 });

@@ -35,7 +35,8 @@ test("sort record object by day of birth ascending", () => {
   console.log(records);
   for (let i = 0; i < records.length - 1; i++) {
     expect(
-      records[i].dateOfBirthValue() < records[i + 1].dateOfBirthValue()
+      recordSort.dateOfBirthValue(records[i]) <
+        recordSort.dateOfBirthValue(records[i + 1])
     ).toEqual(true);
   }
 });
