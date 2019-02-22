@@ -1,7 +1,7 @@
 // CLI prompts and interaction logic
 
 const readlineSync = require("readline-sync");
-const fileHandler = require("./actions/fileHandler");
+const fileHandler = require("./utils/fileHandler");
 
 const runApp = () => {
   let statusCode = 0;

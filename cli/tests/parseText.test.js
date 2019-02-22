@@ -1,6 +1,6 @@
 // Unit tests for parseText.js
 
-const parseText = require("../actions/parseText");
+const parseText = require("../utils/parseText");
 
 test("maps lines of text to record objects", () => {
   const linesOfText = [

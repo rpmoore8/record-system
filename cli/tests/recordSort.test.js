@@ -1,6 +1,6 @@
 // Unit tests for recordSort.js
 
-const recordSort = require("../actions/recordSort");
+const recordSort = require("../utils/recordSort");
 
 const records = [
   {

@@ -1,6 +1,6 @@
 // Unit tests for fileHandler.js
 
-const fileHandler = require("../actions/fileHandler");
+const fileHandler = require("../utils/fileHandler");
 
 // use absolute path
 const directory = "/Users/RPMOORE/Desktop/record-system/cli/tests/testRecords/";

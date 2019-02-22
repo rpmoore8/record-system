@@ -1,0 +1,51 @@
+[
+ {
+  "lastName": "Dang",
+  "firstName": "Carry",
+  "gender": "Female",
+  "favoriteColor": "WHITE",
+  "dateOfBirth": "5/15/1957"
+ },
+ {
+  "lastName": "Dang",
+  "firstName": "Cindy",
+  "gender": "Female",
+  "favoriteColor": "WHITE",
+  "dateOfBirth": "5/14/1957"
+ },
+ {
+  "lastName": "Boom",
+  "firstName": "Cindy",
+  "gender": "Female",
+  "favoriteColor": "WHITE",
+  "dateOfBirth": "4/30/1957"
+ },
+ {
+  "lastName": "Cow",
+  "firstName": "Manny",
+  "gender": "Male",
+  "favoriteColor": "WHITE",
+  "dateOfBirth": "12/30/1956"
+ },
+ {
+  "lastName": "Steely",
+  "firstName": "Dan",
+  "gender": "Male",
+  "favoriteColor": "Yellow",
+  "dateOfBirth": "12/30/1956"
+ },
+ {
+  "lastName": "Harver",
+  "firstName": "Harvy",
+  "gender": "Male",
+  "favoriteColor": "Yellow",
+  "dateOfBirth": "1/1/1969"
+ },
+ {
+  "lastName": "Butter",
+  "firstName": "Peanut",
+  "gender": "Male",
+  "favoriteColor": "Yellow",
+  "dateOfBirth": "1/1/1980"
+ }
+]
