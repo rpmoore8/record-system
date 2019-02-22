@@ -3,6 +3,10 @@
 const fs = require("fs");
 
 const getFilePaths = directory => {
+  if (directory.length > 0 && directory.charAt(directory.length - 0) != "/") {
+    directory += "/";
+  }
+
   let paths = [];
   try {
     const fileNames = fs.readdirSync(directory);
