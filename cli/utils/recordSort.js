@@ -21,23 +21,17 @@ const byGender = records => {
 };
 
 const byDateOfBirth = records => {
-  // create map to represent date text as comparable value
-  let dateToValue = {};
-  records.forEach(record => {
-    if (!(record.dateOfBirth in dateToValue)) {
-      let value = 0;
-      let date = record.dateOfBirth.split("/");
-      let day = Number(date[1]),
-        month = Number(date[0]),
-        year = Number(date[2]);
-      value += day + month * 100 + year * 10000;
-      dateToValue[record.dateOfBirth] = value;
-    }
-  });
-
   records.sort((a, b) => {
-    return dateToValue[a.dateOfBirth] - dateToValue[b.dateOfBirth];
+    return dateToValue(a.dateOfBirth) - dateToValue(b.dateOfBirth);
   });
+};
+
+const dateToValue = string => {
+  let date = string.split("/");
+  let day = Number(date[1]),
+    month = Number(date[0]),
+    year = Number(date[2]);
+  return day + month * 100 + year * 10000;
 };
 
 const byLastNameDesc = records => {

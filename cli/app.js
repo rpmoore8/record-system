@@ -35,11 +35,12 @@ const runApp = () => {
     let type = readlineSync.question(prompts.chooseDisplay);
     if (type.toLowerCase().indexOf("g") > -1) {
       recordSort.byGender(records);
-    } else if (type.toLowerCase().indexOf("l" > -1)) {
+    } else if (type.toLowerCase().indexOf("l") > -1) {
       recordSort.byLastNameDesc(records);
     } else {
       recordSort.byDateOfBirth(records);
     }
+    console.log("Second");
     displayRecords(records);
 
     let exit = readlineSync.question(prompts.exit);

@@ -12,9 +12,7 @@ const parseForAttributes = line => {
   let strippedLine = line.replace(charsToRemove, "");
   let attributes = strippedLine.split(" ");
 
-  // Handle records with missing information
-  while (attributes.length < 5) attributes.push("unknown");
-
+  // Assume there are 5 attributes
   return attributes;
 };
 

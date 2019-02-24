@@ -6,7 +6,7 @@ const noFilesFound = "Directory empty or does not exist.";
 const filesFound = total => `Uploaded ${total} files. Upload more? (y/N): `;
 const chooseDisplay =
   "Display records by (B)irthdate, (g)ender, or (l)astName: ";
-const exit = "Exit? (Y/n): ";
+const exit = "Exit? (y/N): ";
 
 module.exports.welcome = welcome;
 module.exports.directory = directory;
