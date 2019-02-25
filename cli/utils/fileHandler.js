@@ -3,7 +3,7 @@
 const fs = require("fs");
 
 const getFilePaths = directory => {
-  if (directory.length > 0 && directory.charAt(directory.length - 0) != "/") {
+  if (directory.length > 0 && directory.charAt(directory.length - 1) != "/") {
     directory += "/";
   }
 
@@ -12,7 +12,7 @@ const getFilePaths = directory => {
     const fileNames = fs.readdirSync(directory);
     paths = fileNames.map(name => directory + name);
   } catch (error) {
-    console.log("ERROR: " + directory + " not found.");
+    // Directory not found: return empty array
   }
   return paths;
 };

@@ -1,72 +1,58 @@
 // CLI prompts and interaction logic
 
 const readlineSync = require("readline-sync");
-const fileHandler = require("./utils/fileHandler");
-const parseText = require("./utils/parseText");
+const { getFilePaths, getLinesOfText } = require("./utils/fileHandler");
+const { mapTextLinesToRecords } = require("./utils/parseText");
 const recordSort = require("./utils/recordSort");
-
+const tableBuilder = require("./utils/tableBuilder");
 const prompts = require("./prompts");
 
-const runApp = () => {
-  console.log(prompts.welcome);
+const main = () => {
+  welcome();
 
-  let records = {};
-  let filesToUpload = [];
-  let task = "upload";
-
-  while (task === "upload") {
-    let directory = readlineSync.question(prompts.directory);
-    let paths = fileHandler.getFilePaths(directory);
-    if (paths.length === 0) {
-      console.log(prompts.noFilesFound);
-    } else {
-      paths.forEach(path => {
-        filesToUpload.push(path);
-      });
-      let uploadMore = readlineSync.question(prompts.filesFound(paths.length));
-      if (uploadMore.toLowerCase().indexOf("y") < 0) {
-        const textLines = fileHandler.getLinesOfText(filesToUpload);
-        records = parseText.mapTextLinesToRecords(textLines);
-        task = "display";
-      }
-    }
-  }
-  while (task === "display") {
-    let type = readlineSync.question(prompts.chooseDisplay);
-    if (type.toLowerCase().indexOf("g") > -1) {
-      recordSort.byGender(records);
-    } else if (type.toLowerCase().indexOf("l") > -1) {
-      recordSort.byLastNameDesc(records);
-    } else {
-      recordSort.byDateOfBirth(records);
-    }
-    console.log("Second");
-    displayRecords(records);
-
-    let exit = readlineSync.question(prompts.exit);
-    if (exit.toLowerCase().indexOf("y") > -1) {
-      task = "EXIT";
-    }
-  }
+  const paths = findFiles();
+  const records = getRecords(paths);
+  display(records);
 };
 
-function displayRecords(records) {
-  console.log("(lastName) (firstName) (gender) (favoriteColor) (dateOfBirth)");
-  console.log("-------------------------------------------------------");
-  records.forEach(record => {
-    console.log(
-      record.lastName +
-        " " +
-        record.firstName +
-        " " +
-        record.gender +
-        " " +
-        record.favoriteColor +
-        " " +
-        record.dateOfBirth
-    );
-  });
-  console.log();
-}
+const welcome = () => {
+  console.log(prompts.welcome);
+  console.log(prompts.instructions);
+};
 
-runApp();
+const findFiles = () => {
+  let directory = readlineSync.question(prompts.directory);
+  let paths = getFilePaths(directory);
+
+  // Directory empty or does not exist
+  while (paths.length === 0) {
+    console.log(prompts.noFilesFound);
+    directory = readlineSync.question(prompts.directory);
+    paths = getFilePaths(directory);
+  }
+  console.log(prompts.filesFound(paths.length));
+  return paths;
+};
+
+const getRecords = paths => {
+  const records = mapTextLinesToRecords(getLinesOfText(paths));
+  console.log(prompts.recordsFound(records.length));
+  return records;
+};
+
+const display = records => {
+  let sortType = readlineSync.question(prompts.chooseSort).toLowerCase();
+
+  if (sortType.indexOf("b") > -1) {
+    recordSort.byDateOfBirth(records);
+  } else {
+    if (sortType.indexOf("l") > -1) {
+      recordSort.byLastNameDesc(records);
+    } else {
+      recordSort.byGender(records);
+    }
+  }
+  console.log(tableBuilder(records));
+};
+
+main();
