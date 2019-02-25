@@ -4,7 +4,7 @@ CLI used to upload and display records. REST API for accessing records.
 IN DEVELOPMENT: use node to run. <br>
 To start CLI, cd into 'cli' folder and enter 'node app'. <br>
 To start API, cd into 'api' folder and enter 'node server'.
-# CLI:
+# CLI
 Takes a directory as input and uploads 'record' files within directory. <br>
 Records should have UTF-8 encoding and follow one of the following formats:
 1. LastName | FirstName | Gender | FavoriteColor | DateOfBirth
@@ -17,7 +17,7 @@ After records are uploaded, they can be sorted and displayed. Sorting methods:
 2. birth date, ascending
 3. last name, descending
 
-# API:
+# API
 Shares functionality of CLI. Currently requires files from CLI folder. <br>
 Not connected to a database. Tested using a data object within dataStore.js. <br>
 REST style with the following routes:
