@@ -21,8 +21,9 @@ After records are uploaded, they can be sorted and displayed. Sorting methods:
 Shares functionality of CLI. Currently requires files from CLI folder. <br>
 Not connected to a database. Tested using a data object within dataStore.js. <br>
 REST style with the following routes:
-1. POST /records - takes single line of record data in one of the 3 supported formats.
-(NOTE: must be submitted in JSON format with key of "text". Example: { "text": "Smith, Brittany, Female, Green, 4/14/1989" })
+1. POST /records - takes single line of record data in one of the 3 supported formats. <br>
+(NOTE: must be submitted in JSON format with key of "text". <br>
+Example: { "text": "Smith, Brittany, Female, Green, 4/14/1989" })
 2. GET /records/gender - returns records (JSON style) sorted by gender
 3. GET /records/birthdate - returns records sorted by birthdate
 4. GET /records/name - returns records sorted by last name descending
